@@ -37,15 +37,10 @@ class TestExceptionRunner < MiniTest::Unit::TestCase
     assert( did_run )
   end
 
-  def test_raise_threaded
-    runner = ExceptionRunner.new
-
+  def test_direct_raise
     assert_raises( RuntimeError ) do
-      runner.do_it_threaded do
-        raise "from ruby with love"
-      end
+      raise "from ruby with love"
     end
-
   end
 
   def test_raise_now
@@ -59,10 +54,14 @@ class TestExceptionRunner < MiniTest::Unit::TestCase
 
   end
 
-  def test_direct_raise
-    assert_raises( RuntimeError ) do
-      raise "from ruby with love"
-    end
-  end
+  def test_raise_threaded
+    runner = ExceptionRunner.new
 
+    assert_raises( RuntimeError ) do
+      runner.do_it_threaded do
+        raise "from ruby with love"
+      end
+    end
+
+  end
 end
