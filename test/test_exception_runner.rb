@@ -51,7 +51,6 @@ class TestExceptionRunner < MiniTest::Unit::TestCase
         raise "from ruby with love"
       end
     end
-
   end
 
   def test_raise_threaded
@@ -62,7 +61,6 @@ class TestExceptionRunner < MiniTest::Unit::TestCase
         raise "from ruby with love"
       end
     end
-
   end
 
   def test_all_ruby_threaded
