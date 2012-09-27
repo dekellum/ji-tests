@@ -31,17 +31,28 @@ class TestExceptionRunner < MiniTest::Unit::TestCase
   def test_noop
     runner = ExceptionRunner.new
     did_run = false
-    runner.do_it do
+    runner.do_it_threaded do
       did_run = true
     end
     assert( did_run )
   end
 
-  def test_raise_indirect
+  def test_raise_threaded
     runner = ExceptionRunner.new
 
     assert_raises( RuntimeError ) do
-      runner.do_it do
+      runner.do_it_threaded do
+        raise "from ruby with love"
+      end
+    end
+
+  end
+
+  def test_raise_now
+    runner = ExceptionRunner.new
+
+    assert_raises( RuntimeError ) do
+      runner.do_it_now do
         raise "from ruby with love"
       end
     end

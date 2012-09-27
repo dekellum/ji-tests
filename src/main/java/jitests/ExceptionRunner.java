@@ -2,7 +2,12 @@ package jitests;
 
 public class ExceptionRunner
 {
-    public void doIt( final Runnable runnable )
+    public void doItNow( final Runnable runnable )
+    {
+        runnable.run();
+    }
+
+    public void doItThreaded( final Runnable runnable )
         throws InterruptedException
     {
         Wrapper w = new Wrapper( runnable );
