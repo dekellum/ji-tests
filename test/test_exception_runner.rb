@@ -64,4 +64,30 @@ class TestExceptionRunner < MiniTest::Unit::TestCase
     end
 
   end
+
+  def test_all_ruby_threaded
+    runner = RubyRunner.new
+
+    assert_raises( RuntimeError ) do
+      runner.do_it_threaded do
+        raise "from ruby with love"
+      end
+    end
+  end
+
+  class RubyRunner
+    def do_it_threaded
+      ex = nil
+      t = Thread.new do
+        begin
+          yield
+        rescue RuntimeError => e
+          ex = e
+        end
+      end
+      t.join
+      raise ex if ex
+    end
+  end
+
 end
