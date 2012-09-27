@@ -1,4 +1,5 @@
 Manifest.txt
+README.rdoc
 Rakefile
 pom.xml
 lib/ji-tests.rb
