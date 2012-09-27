@@ -1,0 +1,6 @@
+Manifest.txt
+Rakefile
+pom.xml
+lib/ji-tests.rb
+test/test_exception_runner.rb
+lib/ji-tests/ji-tests-0.1.0.jar

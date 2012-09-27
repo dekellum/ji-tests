@@ -1,0 +1,9 @@
+*~
+doc/
+pkg/
+.bundle/
+target/
+.classpath
+.project
+.settings
+lib/ji-tests/*.jar
